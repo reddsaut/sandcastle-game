@@ -5,6 +5,7 @@ using UnityEngine;
 public class Card : ScriptableObject
 {
     public string cardName;
+    public int cost;
     public CardType cardType;
 
     public enum CardType

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Billy
   m_EditorClassIdentifier: 
   cardName: Billy
+  cost: 9
   cardType: 2
