@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "sandcastle card game.sln"
+    "dotnet.defaultSolution": "sandcastle-game.sln"
 }
