@@ -8,6 +8,8 @@ public class Card : ScriptableObject
     public int cost;
     public CardType cardType;
 
+    public string abilityText;
+
     public enum CardType
     {
         Resource,
