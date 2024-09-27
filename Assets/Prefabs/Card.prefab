@@ -645,6 +645,7 @@ MonoBehaviour:
   cardData: {fileID: 0}
   nameText: {fileID: 4593494329510343788}
   costText: {fileID: 7709558733805106267}
+  abilityText: {fileID: 4872323352503262406}
   backgrounds:
   - {fileID: 21300000, guid: a248c1ff2e1a740b4afe0a5d6ab497bc, type: 3}
   - {fileID: 21300000, guid: a3cff586fca8c47ba91e0c8286e048db, type: 3}
