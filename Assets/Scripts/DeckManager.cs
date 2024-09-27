@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class DeckManager : MonoBehavior
+public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
     private int currentIndex = 0;
-    public DrawCard(HandManager handManager)
+    public void DrawCard(HandManager handManager)
     {
         if (allCards.Count == 0)
         {

@@ -19,7 +19,7 @@ public class HandManager : MonoBehaviour
         
     }
 
-    private void AddCardToHand(Card cardData)
+    public void AddCardToHand(Card cardData)
     {
         GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
         cardsInHand.Add(newCard);
