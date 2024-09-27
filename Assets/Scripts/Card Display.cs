@@ -8,6 +8,7 @@ public class CardDisplay : MonoBehaviour
     public Card cardData; 
     public TMP_Text nameText;
     public TMP_Text costText;
+    public TMP_Text abilityText;
     public Sprite[] backgrounds;
     public Image background;
 
@@ -22,6 +23,8 @@ public class CardDisplay : MonoBehaviour
         background.sprite = backgrounds[(int) cardData.cardType];
         nameText.text = cardData.name;
         costText.text = cardData.cost.ToString();
+        abilityText.text = cardData.abilityText;
+
         
     }
 }

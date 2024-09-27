@@ -15,4 +15,4 @@ MonoBehaviour:
   cardName: House
   cost: 1
   cardType: 1
-  abilityText: Add 1
+  abilityText: Add C per turn
