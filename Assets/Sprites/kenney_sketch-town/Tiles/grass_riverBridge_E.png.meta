@@ -1,10 +1,7 @@
 fileFormatVersion: 2
 guid: 66022f86ab04d46269dc40706594a7c5
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -3091165012818034973
-    second: grass_riverBridge_E_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -53,7 +50,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -75,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,23 +136,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grass_riverBridge_E_0
+      name: st2u_x0y0-w256h352
       rect:
         serializedVersion: 2
-        x: 11
-        y: 2
-        width: 234
-        height: 224
-      alignment: 0
+        x: 0
+        y: 0
+        width: 256
+        height: 352
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3ee7ddc6cc9f915d0800000000000000
-      internalID: -3091165012818034973
+      spriteID: 51d7049a3af9d4faf9716f3b4e3f919b
+      internalID: -1378193547
       vertices: []
       indices: 
       edges: []
@@ -164,7 +161,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d99e1a912620a457abc5f1d8934556f7
     internalID: 0
     vertices: []
     indices: 
@@ -173,7 +170,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      st2u_x0y0-w256h352: -1378193547
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

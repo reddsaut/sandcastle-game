@@ -1,10 +1,7 @@
 fileFormatVersion: 2
 guid: 9b4899bc84dc44660819380787140ade
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -1040953455371766476
-    second: roof_gableBeige_E_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -53,7 +50,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -75,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,23 +136,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: roof_gableBeige_E_0
+      name: st2u_x0y0-w256h352
       rect:
         serializedVersion: 2
-        x: 11
-        y: 2
-        width: 233
-        height: 156
-      alignment: 0
+        x: 0
+        y: 0
+        width: 256
+        height: 352
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 435b9d8f85acd81f0800000000000000
-      internalID: -1040953455371766476
+      spriteID: 90ab36f42bcca43f19f68b73631209b0
+      internalID: -1313859276
       vertices: []
       indices: 
       edges: []
@@ -164,7 +161,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 342c931a454c34a6eae4cdbf54a0f174
     internalID: 0
     vertices: []
     indices: 
@@ -173,7 +170,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      st2u_x0y0-w256h352: -1313859276
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

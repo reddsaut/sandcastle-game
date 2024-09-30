@@ -1,10 +1,7 @@
 fileFormatVersion: 2
 guid: 99c09e214d6c24c648a50cb497bf17e8
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 6790116121611272089
-    second: castle_corner_N_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -53,7 +50,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -75,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,23 +136,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: castle_corner_N_0
+      name: st2u_x0y0-w256h352
       rect:
         serializedVersion: 2
-        x: 10
-        y: 2
-        width: 235
-        height: 237
-      alignment: 0
+        x: 0
+        y: 0
+        width: 256
+        height: 352
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 99ffa4413a65b3e50800000000000000
-      internalID: 6790116121611272089
+      spriteID: 2d1dc8765164d4f338c8130901d968ca
+      internalID: -987144736
       vertices: []
       indices: 
       edges: []
@@ -164,7 +161,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 21a0edf87ab134b9fa65d7cb01da6bb6
     internalID: 0
     vertices: []
     indices: 
@@ -173,7 +170,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      st2u_x0y0-w256h352: -987144736
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
