@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1808397495
       objectReference: {fileID: 0}
+    - target: {fileID: 2537043275773850328, guid: c2b27d43324aa42e7b9fd3e063475849, type: 3}
+      propertyPath: housePrefab
+      value: 
+      objectReference: {fileID: 1186287712138987333, guid: c2b27d43324aa42e7b9fd3e063475849, type: 3}
     - target: {fileID: 8600656621400131836, guid: c2b27d43324aa42e7b9fd3e063475849, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -308,7 +312,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934152395}
   m_Enabled: 1
-  m_CellSize: {x: 0.9, y: 0.4, z: 0.9}
+  m_CellSize: {x: 1, y: 0.5, z: 1}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 2
   m_CellSwizzle: 0
@@ -406,7 +410,7 @@ TilemapRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0.1875, z: 0}
+  m_ChunkCullingBounds: {x: 0.056521714, y: 0.26521736, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 3
