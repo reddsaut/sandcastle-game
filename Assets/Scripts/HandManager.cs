@@ -16,7 +16,7 @@ public class HandManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        cardsInHand.Clear();
     }
 
     public void AddCardToHand(Card cardData)
@@ -31,8 +31,7 @@ public class HandManager : MonoBehaviour
     private void UpdateHandVisuals()
     {
         int cardCount = cardsInHand.Count;
-        if (cardCount ==1)
-        {
+        if (cardCount == 1){
             cardsInHand[0].transform.localPosition = new Vector3(0f, 0f, 0f);
             cardsInHand[0].transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             return;
@@ -41,10 +40,12 @@ public class HandManager : MonoBehaviour
         {
             float rotationAngle = (fanSpread * (i - (cardCount - 1) / 2f));
             cardsInHand[i].transform.localRotation = Quaternion.Euler(0f, 0f, rotationAngle);
+            
             float horizontalOffset = (cardSpacing * (i - (cardCount - 1) / 2f));
 
             float normalizedPosition = (2f * i / (cardCount - 1) - 1f);
-            float verticalOffset = (verticalSpacing * i - normalizedPosition * normalizedPosition);
+            float verticalOffset = verticalSpacing * (1 - normalizedPosition * normalizedPosition);
+            
             cardsInHand[i].transform.localPosition = new Vector3(horizontalOffset, verticalOffset, 0f);
         }
     }
