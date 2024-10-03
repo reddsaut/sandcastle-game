@@ -12,6 +12,9 @@ public class CardDisplay : MonoBehaviour
     public Sprite[] backgrounds;
     public Image background;
 
+    public Sprite[] images;
+    public Image image;
+
 
     void Start()
     {
@@ -25,6 +28,10 @@ public class CardDisplay : MonoBehaviour
         costText.text = cardData.cost.ToString();
         abilityText.text = cardData.abilityText;
 
-        
+        image.sprite = images[(int) cardData.subType];
+
+        if(cardData.cardType == Card.CardType.Resource) { // resource (money) cards have no cost
+            costText.text = "";
+        }
     }
 }
