@@ -53,6 +53,6 @@ public class HandManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateHandVisuals();
+        //UpdateHandVisuals();
     }
 }
