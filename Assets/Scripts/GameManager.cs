@@ -71,6 +71,9 @@ public class GameManager : MonoBehaviour
 
     public void AdvanceTurn()
     {
+        money = 0;
+        moneyText.text = "" + money;
+        // shuffle if needed and draw new cards
         Debug.Log("ooh that tickles");
     }
 
