@@ -52,16 +52,16 @@ public class GameManager : MonoBehaviour
         switch (subType)
         {
             case Card.SubType.Money1:
-                deckManager.discardPile.Add(card.GetComponent<CardDisplay>().cardData);
                 IncMoney(1); // add 1 coin
+                deckManager.discardPile.Add(card.GetComponent<CardDisplay>().cardData);
                 handManager.RemoveCardFromHand(card);
                 StartCoroutine(CardFade(card));
                 break;
             case Card.SubType.House:
                 if (Buy(card.GetComponent<CardDisplay>().cardData.cost))
                 {
-                    deckManager.discardPile.Add(card.GetComponent<CardDisplay>().cardData);
                     Instantiate(housePrefab, new Vector3(0, 0, 0), Quaternion.identity); // house builder mode
+                    deckManager.discardPile.Add(card.GetComponent<CardDisplay>().cardData);
                     handManager.RemoveCardFromHand(card);
                     StartCoroutine(CardFade(card));
                 }
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     {
         money = 0;
         moneyText.text = "" + money;
-        // TODO: shuffle if needed and draw new cards
+        StartCoroutine(DiscardHand());
         Debug.Log("ooh that tickles");
     }
 
@@ -87,5 +87,18 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         Destroy(card);
+    }
+
+    IEnumerator DiscardHand()
+    {
+        while (handManager.cardsInHand.Count > 0)
+        {
+            StartCoroutine(CardFade(handManager.cardsInHand[0]));
+            yield return new WaitForSeconds(0.1f);
+            deckManager.discardPile.Add(handManager.cardsInHand[0].GetComponent<CardDisplay>().cardData);
+            handManager.RemoveCardFromHand(handManager.cardsInHand[0]);
+        }
+        yield return new WaitForSeconds(0.2f);
+        deckManager.NewHand();
     }
 }

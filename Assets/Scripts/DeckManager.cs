@@ -12,8 +12,6 @@ public class DeckManager : MonoBehaviour
     public int maxHandSize;
     public int currentHandSize;
     private HandManager handManager;
-
-    private static Random rng = new Random();
     void Start()
     {
         //Load all card assets from the Resources folder
@@ -24,8 +22,12 @@ public class DeckManager : MonoBehaviour
 
         handManager = FindAnyObjectByType<HandManager>();
         maxHandSize = handManager.maxHandSize;
-        StartCoroutine(DrawHand());
+        NewHand();
+    }
 
+    public void NewHand()
+    {
+        StartCoroutine(DrawHand());
     }
 
     void Update()
@@ -43,18 +45,9 @@ public class DeckManager : MonoBehaviour
             foreach (Card card in discardPile)
             {
                 allCards.Add(card);
-                //discardPile.Remove(card);
             }
-            int n = allCards.Count;
-            while (n > 1)
-            {
-                n--;
-                int k = rng.Next(n + 1);
-                Card value = allCards[k];
-                allCards[k] = allCards[n];
-                allCards[n] = value;
-            }
-            DrawCard(handManager);
+            discardPile.Clear();
+            Shuffler.Shuffle<Card>(allCards);
         }
         if (currentHandSize < maxHandSize)
         {
