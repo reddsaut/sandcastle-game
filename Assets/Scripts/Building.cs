@@ -24,7 +24,7 @@ public class Building : MonoBehaviour
         }
         if(Input.GetMouseButtonUp(0))
         {
-            Instantiate(housePrefab, transform.position, Quaternion.identity);
+            //Instantiate(housePrefab, transform.position, Quaternion.identity);
         }
         
     }
