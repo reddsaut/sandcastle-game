@@ -40,7 +40,7 @@ public class DeckManager : MonoBehaviour
     {
         if (allCards.Count == 0)
         {
-            foreach(Card card in discardPile)
+            foreach (Card card in discardPile)
             {
                 allCards.Add(card);
                 //discardPile.Remove(card);

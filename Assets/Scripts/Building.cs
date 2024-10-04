@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Building : MonoBehaviour
-{    
+{
     private bool placement;
     public GameObject housePrefab;
     void Start()
@@ -13,22 +13,23 @@ public class Building : MonoBehaviour
     }
     void Update()
     {
-        if(placement)
+        if (placement)
         {
             transform.position = GetMouseWorldPosition();
-            if(Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 placement = false;
                 transform.position = new Vector3(100 * Mathf.Round(transform.position.x / 100), 100 * (Mathf.Round(transform.position.y / 100) - 0.27f), 0);
             }
         }
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             //Instantiate(housePrefab, transform.position, Quaternion.identity);
         }
-        
+
     }
-    Vector3 GetMouseWorldPosition(){
+    Vector3 GetMouseWorldPosition()
+    {
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0;
         return mouseWorldPos;

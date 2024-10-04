@@ -43,14 +43,14 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                 break;
             case 2:
                 HandleDragState();
-                if(!Input.GetMouseButton(0))
+                if (!Input.GetMouseButton(0))
                 {
                     TransitionToState0();
                 }
                 break;
             case 3:
                 HandlePlayState();
-                if(!Input.GetMouseButton(0))
+                if (!Input.GetMouseButton(0))
                 {
                     PlayCard();
                 }
@@ -71,7 +71,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(currentState == 0)
+        if (currentState == 0)
         {
             originalPosition = rectTransform.localPosition;
             originalScale = rectTransform.localScale;
@@ -100,16 +100,17 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     public void OnDrag(PointerEventData eventData)
     {
-        if(currentState == 2)
+        if (currentState == 2)
         {
             Vector2 localPointerPosition;
-            if(RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(), eventData.position, eventData.pressEventCamera, out localPointerPosition))
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(), eventData.position, eventData.pressEventCamera, out localPointerPosition))
             {
                 rectTransform.position = Vector3.Lerp(rectTransform.position, Input.mousePosition, lerpFactor);
-                if(rectTransform.localPosition.y > cardPlay.y)
+                if (rectTransform.localPosition.y > cardPlay.y)
                 {
                     currentState = 3;
-                    rectTransform.localPosition = Vector3.Lerp(rectTransform.position, playPosition, lerpFactor);                }
+                    rectTransform.localPosition = Vector3.Lerp(rectTransform.position, playPosition, lerpFactor);
+                }
             }
         }
     }
@@ -118,7 +119,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     {
         glowEffect.gameObject.SetActive(true);
         // set color
-        if(cost > gameManager.GetMoney())
+        if (cost > gameManager.GetMoney())
         {
             glowEffect.color = new Color(1, 0, 0, 0.6f);
         }
@@ -140,7 +141,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         rectTransform.localRotation = Quaternion.identity;
 
 
-        if(Input.mousePosition.y < cardPlay.y)
+        if (Input.mousePosition.y < cardPlay.y)
         {
             currentState = 2;
         }

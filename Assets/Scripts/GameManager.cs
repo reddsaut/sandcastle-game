@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public DeckManager deckManager;
     public HandManager handManager;
     public GameObject housePrefab;
-
     public TMP_Text moneyText;
 
     void Start()
@@ -20,7 +19,7 @@ public class GameManager : MonoBehaviour
     }
     public bool Buy(int cost)
     {
-        if(cost > money)
+        if (cost > money)
         {
             return false;
         }
@@ -45,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void Play(GameObject card)
     {
-        if(card == null || card.GetComponent<CardDisplay>() == null)
+        if (card == null || card.GetComponent<CardDisplay>() == null)
         {
             return;
         }
@@ -59,9 +58,10 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(CardFade(card));
                 break;
             case Card.SubType.House:
-                if(Buy(card.GetComponent<CardDisplay>().cardData.cost)) {
+                if (Buy(card.GetComponent<CardDisplay>().cardData.cost))
+                {
                     deckManager.discardPile.Add(card.GetComponent<CardDisplay>().cardData);
-                    Instantiate(housePrefab, new Vector3(0,0,0), Quaternion.identity); // house builder mode
+                    Instantiate(housePrefab, new Vector3(0, 0, 0), Quaternion.identity); // house builder mode
                     handManager.RemoveCardFromHand(card);
                     StartCoroutine(CardFade(card));
                 }
@@ -73,16 +73,16 @@ public class GameManager : MonoBehaviour
     {
         money = 0;
         moneyText.text = "" + money;
-        // shuffle if needed and draw new cards
+        // TODO: shuffle if needed and draw new cards
         Debug.Log("ooh that tickles");
     }
 
     IEnumerator CardFade(GameObject card)
     {
-        Destroy(card.GetComponent<CardMovement>());
-        for(int i = 0; i < 20; i++)
+        Destroy(card.GetComponent<CardMovement>()); // otherwise will keep calling GameManager.Play()
+        for (int i = 0; i < 20; i++)
         {
-            card.transform.Rotate(0, 0, 360f/20);
+            card.transform.Rotate(0, 0, 360f / 20);
             card.transform.localScale /= 1.1f;
             yield return new WaitForSeconds(0.01f);
         }
