@@ -6,7 +6,7 @@ public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
 
-    public int startingHandSize = 6;
+    public int startingHandSize = 5;
 
     private int currentIndex = 0;
     public int maxHandSize;
@@ -21,7 +21,7 @@ public class DeckManager : MonoBehaviour
         //Add the loaded cards to the allCards list
         allCards.AddRange(cards);
 
-        handManager = FindObjectOfType<HandManager>();
+        handManager = FindAnyObjectByType<HandManager>();
         maxHandSize = handManager.maxHandSize;
         StartCoroutine(DrawHand());
 
