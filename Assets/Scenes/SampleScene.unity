@@ -644,6 +644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c94cd81b4ed0ce44bd37aeff017f88f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handManager: {fileID: 163101737}
+  housePrefab: {fileID: 1186287712138987333, guid: c2b27d43324aa42e7b9fd3e063475849, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

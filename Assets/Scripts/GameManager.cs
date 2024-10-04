@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.Examples;
@@ -10,6 +11,9 @@ public class GameManager : MonoBehaviour
     public OptionsManager optionsManager { get; private set; }
     public AudioManager audioManager { get; private set; }
     public DeckManager deckManager { get; private set; }
+    public HandManager handManager;
+
+    public GameObject housePrefab;
     private void Awake()
     {
         if (Instance == null)
@@ -27,6 +31,7 @@ public class GameManager : MonoBehaviour
         optionsManager = GetComponentInChildren<OptionsManager>();
         audioManager = GetComponentInChildren<AudioManager>();
         deckManager = GetComponentInChildren<DeckManager>();
+        handManager = GetComponentInChildren<HandManager>();
         if (optionsManager == null)
         {
             GameObject prefab = Resources.Load<GameObject>("Prefabs/OptionsManager");
@@ -83,5 +88,35 @@ public class GameManager : MonoBehaviour
     public void IncMoney(int money)
     {
         this.money += money;
+    }
+
+    public int GetMoney()
+    {
+        return money;
+    }
+
+    public void Play(GameObject card)
+    {
+        if(card == null || card.GetComponent<CardDisplay>() == null)
+        {
+            return;
+        }
+        Card.SubType subType= card.GetComponent<CardDisplay>().cardData.subType;
+        Debug.Log("" + subType.ToString());
+        switch (subType)
+        {
+            case Card.SubType.Money1:
+                IncMoney(1); // add 1 coin
+                handManager.RemoveCardFromHand(card);
+                Destroy(card);
+                break;
+            case Card.SubType.House:
+                if(Buy(1)) {
+                    Instantiate(housePrefab, new Vector3(0,0,0), Quaternion.identity); // house builder mode
+                    handManager.RemoveCardFromHand(card);
+                    Destroy(card);
+                }
+                break;
+        }
     }
 }
