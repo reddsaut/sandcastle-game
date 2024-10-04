@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
+    public List<Card> discardPile = new List<Card> ();
 
     public int startingHandSize = 5;
 
@@ -12,6 +14,11 @@ public class DeckManager : MonoBehaviour
     public int maxHandSize;
     public int currentHandSize;
     private HandManager handManager;
+
+    private static Random rng = new Random();
+
+
+       
 
     void Start()
     {
@@ -38,12 +45,27 @@ public class DeckManager : MonoBehaviour
     public void DrawCard(HandManager handManager)
     {
         if (allCards.Count == 0)
-            return;
-
+        {
+            foreach (Card card in discardPile)
+            {
+                allCards.Add(card);
+                discardPile.Remove(card);
+            }
+            int n = allCards.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                Card value = allCards[k];
+                allCards[k] = allCards[n];
+                allCards[n] = value;
+            }
+        }
         if (currentHandSize < maxHandSize)
         {
             Card nextCard = allCards[currentIndex];
             handManager.AddCardToHand(nextCard);
+            allCards.Remove(nextCard);
             currentIndex = (currentIndex + 1) % allCards.Count;
         }
     }
