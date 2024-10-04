@@ -19,7 +19,7 @@ public class Building : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 placement = false;
-                transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y) - 0.27f, 0);
+                transform.position = new Vector3(100 * Mathf.Round(transform.position.x / 100), 100 * (Mathf.Round(transform.position.y / 100) - 0.27f), 0);
             }
         }
         if(Input.GetMouseButtonUp(0))
