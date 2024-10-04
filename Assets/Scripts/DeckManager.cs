@@ -9,8 +9,6 @@ public class DeckManager : MonoBehaviour
     public List<Card> discardPile = new List<Card> ();
 
     private int startingHandSize = 5;
-
-    private int currentIndex = 0;
     public int maxHandSize;
     public int currentHandSize;
     private HandManager handManager;
@@ -46,10 +44,10 @@ public class DeckManager : MonoBehaviour
     {
         if (allCards.Count == 0)
         {
-            foreach (Card card in discardPile)
+            foreach(Card card in discardPile)
             {
                 allCards.Add(card);
-                discardPile.Remove(card);
+                //discardPile.Remove(card);
             }
             int n = allCards.Count;
             while (n > 1)
@@ -60,13 +58,12 @@ public class DeckManager : MonoBehaviour
                 allCards[k] = allCards[n];
                 allCards[n] = value;
             }
+            DrawCard(handManager);
         }
         if (currentHandSize < maxHandSize)
         {
-            Card nextCard = allCards[currentIndex];
-            handManager.AddCardToHand(nextCard);
-            allCards.Remove(nextCard);
-            currentIndex = (currentIndex + 1) % allCards.Count;
+            handManager.AddCardToHand(allCards[0]);
+            allCards.Remove(allCards[0]);
         }
     }
 

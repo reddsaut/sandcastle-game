@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private int money;
     public OptionsManager optionsManager { get; private set; }
     public AudioManager audioManager { get; private set; }
-    public DeckManager deckManager { get; private set; }
+    public DeckManager deckManager;
     public HandManager handManager;
 
     public GameObject housePrefab;
@@ -26,52 +26,52 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void InitializeManagers()
-    {
-        optionsManager = GetComponentInChildren<OptionsManager>();
-        audioManager = GetComponentInChildren<AudioManager>();
-        deckManager = GetComponentInChildren<DeckManager>();
-        handManager = GetComponentInChildren<HandManager>();
-        if (optionsManager == null)
-        {
-            GameObject prefab = Resources.Load<GameObject>("Prefabs/OptionsManager");
-            if(prefab == null)
-            {
-                Debug.Log($"OptionsManager prefab not found");
-            }
-            else
-            {
-                Instantiate(prefab, transform.position, Quaternion.identity, transform);
-                optionsManager = GetComponentInChildren<OptionsManager>();
-            }
-        }
-        if (audioManager == null)
-        {
-            GameObject prefab = Resources.Load<GameObject>("Prefabs/AudioManager");
-            if (prefab == null)
-            {
-                Debug.Log($"AudioManager prefab not found");
-            }
-            else
-            {
-                Instantiate(prefab, transform.position, Quaternion.identity, transform);
-                audioManager = GetComponentInChildren<AudioManager>();
-            }
-        }
-        if (deckManager == null)
-        {
-            GameObject prefab = Resources.Load<GameObject>("Prefabs/DeckManager");
-            if (prefab == null)
-            {
-                Debug.Log($"DeckManager prefab not found");
-            }
-            else
-            {
-                Instantiate(prefab, transform.position, Quaternion.identity, transform);
-                deckManager = GetComponentInChildren<DeckManager>();
-            }
-        }
-    }
+    //private void InitializeManagers()
+    //{
+    //    optionsManager = GetComponentInChildren<OptionsManager>();
+    //    audioManager = GetComponentInChildren<AudioManager>();
+    //    deckManager = GetComponentInChildren<DeckManager>();
+    //    handManager = GetComponentInChildren<HandManager>();
+    //    if (optionsManager == null)
+    //    {
+    //        GameObject prefab = Resources.Load<GameObject>("Prefabs/OptionsManager");
+    //        if(prefab == null)
+    //        {
+    //            Debug.Log($"OptionsManager prefab not found");
+    //        }
+    //        else
+    //        {
+    //            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+    //            optionsManager = GetComponentInChildren<OptionsManager>();
+    //        }
+    //    }
+    //    if (audioManager == null)
+    //    {
+    //        GameObject prefab = Resources.Load<GameObject>("Prefabs/AudioManager");
+    //        if (prefab == null)
+    //        {
+    //            Debug.Log($"AudioManager prefab not found");
+    //        }
+    //        else
+    //        {
+    //            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+    //            audioManager = GetComponentInChildren<AudioManager>();
+    //        }
+    //    }
+    //    if (deckManager == null)
+    //    {
+    //        GameObject prefab = Resources.Load<GameObject>("Prefabs/DeckManager");
+    //        if (prefab == null)
+    //        {
+    //            Debug.Log($"DeckManager prefab not found");
+    //        }
+    //        else
+    //        {
+    //            Instantiate(prefab, transform.position, Quaternion.identity, transform);
+    //            deckManager = GetComponentInChildren<DeckManager>();
+    //        }
+    //    }
+    //}
     public bool Buy(int cost)
     {
         if(cost > money)
@@ -106,12 +106,14 @@ public class GameManager : MonoBehaviour
         switch (subType)
         {
             case Card.SubType.Money1:
+                deckManager.discardPile.Add(card.GetComponent<CardDisplay>().cardData);
                 IncMoney(1); // add 1 coin
                 handManager.RemoveCardFromHand(card);
                 Destroy(card);
                 break;
             case Card.SubType.House:
                 if(Buy(1)) {
+                    deckManager.discardPile.Add(card.GetComponent<CardDisplay>().cardData);
                     Instantiate(housePrefab, new Vector3(0,0,0), Quaternion.identity); // house builder mode
                     handManager.RemoveCardFromHand(card);
                     Destroy(card);
