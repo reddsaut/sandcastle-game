@@ -56,14 +56,14 @@ public class GameManager : MonoBehaviour
                 deckManager.discardPile.Add(card.GetComponent<CardDisplay>().cardData);
                 IncMoney(1); // add 1 coin
                 handManager.RemoveCardFromHand(card);
-                Destroy(card);
+                StartCoroutine(CardFade(card));
                 break;
             case Card.SubType.House:
                 if(Buy(card.GetComponent<CardDisplay>().cardData.cost)) {
                     deckManager.discardPile.Add(card.GetComponent<CardDisplay>().cardData);
                     Instantiate(housePrefab, new Vector3(0,0,0), Quaternion.identity); // house builder mode
                     handManager.RemoveCardFromHand(card);
-                    Destroy(card);
+                    StartCoroutine(CardFade(card));
                 }
                 break;
         }
@@ -72,5 +72,17 @@ public class GameManager : MonoBehaviour
     public void AdvanceTurn()
     {
         Debug.Log("ooh that tickles");
+    }
+
+    IEnumerator CardFade(GameObject card)
+    {
+        Destroy(card.GetComponent<CardMovement>());
+        for(int i = 0; i < 20; i++)
+        {
+            card.transform.Rotate(0, 0, 360f/20);
+            card.transform.localScale /= 1.1f;
+            yield return new WaitForSeconds(0.01f);
+        }
+        Destroy(card);
     }
 }
