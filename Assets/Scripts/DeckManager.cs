@@ -6,7 +6,7 @@ using Random = System.Random;
 public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
-    public List<Card> discardPile = new List<Card> ();
+    public List<Card> discardPile = new List<Card>();
 
     private int startingHandSize = 5;
     public int maxHandSize;
@@ -14,10 +14,6 @@ public class DeckManager : MonoBehaviour
     private HandManager handManager;
 
     private static Random rng = new Random();
-
-
-       
-
     void Start()
     {
         //Load all card assets from the Resources folder

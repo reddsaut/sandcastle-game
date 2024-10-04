@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: House
   m_EditorClassIdentifier: 
   cardName: House
-  cost: 1
+  cost: 3
   cardType: 1
   subType: 1
   abilityText: Add C per turn

@@ -1,77 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using TMPro.Examples;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
     private int money;
-    public OptionsManager optionsManager { get; private set; }
-    public AudioManager audioManager { get; private set; }
     public DeckManager deckManager;
     public HandManager handManager;
-
     public GameObject housePrefab;
-    private void Awake()
+
+    public TMP_Text moneyText;
+
+    void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
+        moneyText.text = "" + money;
     }
-    //private void InitializeManagers()
-    //{
-    //    optionsManager = GetComponentInChildren<OptionsManager>();
-    //    audioManager = GetComponentInChildren<AudioManager>();
-    //    deckManager = GetComponentInChildren<DeckManager>();
-    //    handManager = GetComponentInChildren<HandManager>();
-    //    if (optionsManager == null)
-    //    {
-    //        GameObject prefab = Resources.Load<GameObject>("Prefabs/OptionsManager");
-    //        if(prefab == null)
-    //        {
-    //            Debug.Log($"OptionsManager prefab not found");
-    //        }
-    //        else
-    //        {
-    //            Instantiate(prefab, transform.position, Quaternion.identity, transform);
-    //            optionsManager = GetComponentInChildren<OptionsManager>();
-    //        }
-    //    }
-    //    if (audioManager == null)
-    //    {
-    //        GameObject prefab = Resources.Load<GameObject>("Prefabs/AudioManager");
-    //        if (prefab == null)
-    //        {
-    //            Debug.Log($"AudioManager prefab not found");
-    //        }
-    //        else
-    //        {
-    //            Instantiate(prefab, transform.position, Quaternion.identity, transform);
-    //            audioManager = GetComponentInChildren<AudioManager>();
-    //        }
-    //    }
-    //    if (deckManager == null)
-    //    {
-    //        GameObject prefab = Resources.Load<GameObject>("Prefabs/DeckManager");
-    //        if (prefab == null)
-    //        {
-    //            Debug.Log($"DeckManager prefab not found");
-    //        }
-    //        else
-    //        {
-    //            Instantiate(prefab, transform.position, Quaternion.identity, transform);
-    //            deckManager = GetComponentInChildren<DeckManager>();
-    //        }
-    //    }
-    //}
     public bool Buy(int cost)
     {
         if(cost > money)
@@ -81,6 +27,7 @@ public class GameManager : MonoBehaviour
         else
         {
             money -= cost;
+            moneyText.text = "" + this.money;
             return true;
         }
     }
@@ -88,6 +35,7 @@ public class GameManager : MonoBehaviour
     public void IncMoney(int money)
     {
         this.money += money;
+        moneyText.text = "" + this.money;
     }
 
     public int GetMoney()
@@ -101,8 +49,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        Card.SubType subType= card.GetComponent<CardDisplay>().cardData.subType;
-        Debug.Log("" + subType.ToString());
+        Card.SubType subType = card.GetComponent<CardDisplay>().cardData.subType;
         switch (subType)
         {
             case Card.SubType.Money1:
@@ -112,7 +59,7 @@ public class GameManager : MonoBehaviour
                 Destroy(card);
                 break;
             case Card.SubType.House:
-                if(Buy(1)) {
+                if(Buy(card.GetComponent<CardDisplay>().cardData.cost)) {
                     deckManager.discardPile.Add(card.GetComponent<CardDisplay>().cardData);
                     Instantiate(housePrefab, new Vector3(0,0,0), Quaternion.identity); // house builder mode
                     handManager.RemoveCardFromHand(card);
@@ -120,5 +67,10 @@ public class GameManager : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void AdvanceTurn()
+    {
+        Debug.Log("ooh that tickles");
     }
 }
