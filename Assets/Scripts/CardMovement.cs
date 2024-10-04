@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -12,10 +13,14 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private Quaternion originalRotation;
     private Vector3 originalPosition;
 
+    private GameManager gameManager;
+
+    private int cost;
+
     [SerializeField] private float selectScale = 1.1f;
     [SerializeField] private Vector2 cardPlay;
     [SerializeField] private Vector3 playPosition;
-    [SerializeField] private GameObject glowEffect;
+    [SerializeField] private Image glowEffect;
     [SerializeField] private float lerpFactor = .1f;
     void Start()
     {
@@ -24,6 +29,9 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         originalScale = rectTransform.localScale;
         originalPosition = rectTransform.localPosition;
         originalRotation = rectTransform.localRotation;
+
+        gameManager = FindAnyObjectByType<GameManager>();
+        cost = gameObject.GetComponent<CardDisplay>().cardData.cost;
     }
 
     void Update()
@@ -44,7 +52,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                 HandlePlayState();
                 if(!Input.GetMouseButton(0))
                 {
-                    TransitionToState0();
+                    PlayCard();
                 }
                 break;
 
@@ -58,7 +66,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         rectTransform.localScale = originalScale;
         rectTransform.localPosition = originalPosition;
         rectTransform.localRotation = originalRotation;
-        glowEffect.SetActive(false);
+        glowEffect.gameObject.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -108,7 +116,16 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     private void HandleHoverState()
     {
-        glowEffect.SetActive(true);
+        glowEffect.gameObject.SetActive(true);
+        // set color
+        if(cost > gameManager.GetMoney())
+        {
+            glowEffect.color = new Color(1, 0, 0, 0.6f);
+        }
+        else
+        {
+            glowEffect.color = new Color(0, 1, 1, 0.6f);
+        }
         rectTransform.localScale = originalScale * selectScale;
     }
 
@@ -122,9 +139,15 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         rectTransform.localPosition = playPosition;
         rectTransform.localRotation = Quaternion.identity;
 
+
         if(Input.mousePosition.y < cardPlay.y)
         {
             currentState = 2;
         }
+    }
+
+    private void PlayCard()
+    {
+        gameManager.Play(gameObject);
     }
 }

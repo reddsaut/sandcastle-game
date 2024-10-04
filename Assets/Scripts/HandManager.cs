@@ -30,8 +30,14 @@ public class HandManager : MonoBehaviour
         //Set the CardData of the instantiated card
         newCard.GetComponent<CardDisplay>().cardData = cardData;
 
-
         UpdateHandVisuals();
+    }
+
+    public bool RemoveCardFromHand(GameObject card)
+    {
+        bool r = cardsInHand.Remove(card);
+        UpdateHandVisuals();
+        return r;
     }
 
     void Update()
