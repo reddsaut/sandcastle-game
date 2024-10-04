@@ -10,6 +10,8 @@ public class Card : ScriptableObject
 
     public SubType subType;
 
+    public MonoBehaviour script;
+
     public string abilityText;
 
     public enum CardType

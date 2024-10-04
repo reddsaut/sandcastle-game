@@ -6,7 +6,7 @@ public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
 
-    public int startingHandSize = 5;
+    private int startingHandSize = 5;
 
     private int currentIndex = 0;
     public int maxHandSize;

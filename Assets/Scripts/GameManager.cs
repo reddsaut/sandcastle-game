@@ -67,9 +67,21 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public int Money
+    public bool Buy(int cost)
     {
-        get { return money; }
-        set { money = value; }
+        if(cost > money)
+        {
+            return false;
+        }
+        else
+        {
+            money -= cost;
+            return true;
+        }
+    }
+
+    public void IncMoney(int money)
+    {
+        this.money += money;
     }
 }
