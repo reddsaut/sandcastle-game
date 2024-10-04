@@ -23,11 +23,8 @@ public class DeckManager : MonoBehaviour
 
         handManager = FindAnyObjectByType<HandManager>();
         maxHandSize = handManager.maxHandSize;
-        for (int i = 0; i < startingHandSize; i++)
-        {
-            Debug.Log($"Drawing Card");
-            DrawCard(handManager);
-        }
+        StartCoroutine(DrawHand());
+
     }
 
     void Update()
@@ -48,6 +45,16 @@ public class DeckManager : MonoBehaviour
             Card nextCard = allCards[currentIndex];
             handManager.AddCardToHand(nextCard);
             currentIndex = (currentIndex + 1) % allCards.Count;
+        }
+    }
+
+    IEnumerator DrawHand()
+    {
+        for (int i = 0; i < startingHandSize; i++)
+        {
+            Debug.Log($"Drawing Card");
+            DrawCard(handManager);
+            yield return new WaitForSeconds(1f / 10);
         }
     }
 }
