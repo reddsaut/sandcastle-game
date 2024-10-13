@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using TMPro;
 using TMPro.Examples;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,9 +15,20 @@ public class GameManager : MonoBehaviour
     public GameObject housePrefab;
     public TMP_Text moneyText;
 
+    public GameObject pauseScreen;
+
     void Start()
     {
+        pauseScreen.SetActive(false);
         moneyText.text = "" + money;
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
     }
     public bool Buy(int cost)
     {
@@ -74,7 +87,11 @@ public class GameManager : MonoBehaviour
         money = 0;
         moneyText.text = "" + money;
         StartCoroutine(DiscardHand());
-        Debug.Log("ooh that tickles");
+    }
+
+    public void TogglePause()
+    {
+        pauseScreen.SetActive(!pauseScreen.activeSelf);
     }
 
     IEnumerator CardFade(GameObject card)
@@ -100,5 +117,15 @@ public class GameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.2f);
         deckManager.NewHand();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Main");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
